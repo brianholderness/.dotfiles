@@ -32,6 +32,8 @@ fi
 function _bh_is_fnm_installed() {
     if _bh_is_mac; then
         _bh_is_valid_file "$(brew --prefix)/bin/fnm" &> /dev/null
+    elif _bh_is_linux; then
+        _bh_is_valid_directory "$HOME/.fnm" &> /dev/null
     else
         false
     fi
