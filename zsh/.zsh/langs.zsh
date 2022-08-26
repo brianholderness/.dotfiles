@@ -4,14 +4,15 @@
 function _bh_is_go_installed() {
     if _bh_is_mac; then
         _bh_is_valid_file "$(brew --prefix)/bin/go" &> /dev/null
+    elif _bh_is_linux; then
+        _bh_is_valid_directory "/usr/local/go" &> /dev/null
     else
         false
     fi
 }
 
 if _bh_is_go_installed; then
-    _bh_append_path "$GOPATH/bin"
-    _bh_append_path "$GOROOT/bin"
+    _bh_is_linux && _bh_append_path "/usr/local/go/bin"
 else
     _bh_printerr "Cannot use golang" "golang is not installed"
 fi
