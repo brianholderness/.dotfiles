@@ -12,7 +12,7 @@ function _bh_is_go_installed() {
 }
 
 if _bh_is_go_installed; then
-    _bh_is_linux && _bh_append_path "/usr/local/go/bin"
+    _bh_is_linux && _bh_prepend_path "/usr/local/go/bin"
 else
     _bh_printerr "Cannot use golang" "golang is not installed"
 fi
@@ -38,7 +38,7 @@ function _bh_is_fnm_installed() {
 }
 
 if _bh_is_fnm_installed; then
-    _bh_is_mac || _bh_append_path "$HOME/.fnm"
+    _bh_is_mac || _bh_prepend_path "$HOME/.fnm"
     eval "$(fnm env --use-on-cd)"
 else
     _bh_printerr "Cannot use nodejs (fnm)" "fnm is not installed"
