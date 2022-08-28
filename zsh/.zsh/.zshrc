@@ -45,19 +45,18 @@ _bh_is_mac && _bh_safe_source "$ZDOTDIR/homebrew.zsh"
 _bh_safe_source "$ZDOTDIR/aliases.zsh"
 _bh_safe_source "$ZDOTDIR/appearance.zsh"
 
+_bh_prepend_path "$HOME/.local/bin"
+
 _bh_safe_source "$ZDOTDIR/langs.zsh"
 
 _bh_is_mac && _bh_safe_source "$ZDOTDIR/1password.zsh"
 _bh_is_wsl && _bh_safe_source "$ZDOTDIR/npiperelay.zsh"
 
 ################################################################################
-# Path
-################################################################################
-_bh_prepend_path "$HOME/.local/bin"
-
-################################################################################
 # History
 ################################################################################
+setopt SHARE_HISTORY
+HISTFILE="$ZDOTDIR/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=10000
 
