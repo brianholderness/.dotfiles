@@ -65,7 +65,7 @@ autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-if _bh_is_wsl; then
+if _bh_is_linux; then
     UP_KEY="^[OA"
     DOWN_KEY="^[OB"
 else
