@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+main() {
+    commands=(
+        "brew list"
+        "brew leaves | xargs -n1 brew desc"
+        "brew leaves --installed-on-request | xargs -n1 brew desc"
+        "brew outdated"
+        "brew upgrade"
+        "brew update"
+        "brew autoremove"
+        "brew cleanup --prune=all --dry-run"
+        "brew cleanup --prune=all"
+        "brew doctor"
+
+        "echo \"\$PATH\" | tr ':' '\n'"
+    )
+    selected=$(printf "%s\n" "${commands[@]}" | fzf --layout=reverse --height=50%)
+
+    /usr/bin/env bash -c "$selected"
+}
+
+main

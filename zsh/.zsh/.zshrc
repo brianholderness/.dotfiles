@@ -65,7 +65,7 @@ autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-if _bh_is_linux; then
+if _bh_is_wsl; then
     UP_KEY="^[OA"
     DOWN_KEY="^[OB"
 else
@@ -88,3 +88,14 @@ zstyle ':completion:*' menu select
 
 # Allow for shift-tab in completion menu
 bindkey "^[[Z" reverse-menu-complete
+
+################################################################################
+# Custom keybinds
+################################################################################
+function run_launcher() {
+    bh-launcher
+    printf "\n\n"
+    zle redisplay
+}
+zle -N run_launcher
+bindkey '^k' run_launcher
