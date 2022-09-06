@@ -51,6 +51,7 @@ _bh_safe_source "$ZDOTDIR/langs.zsh"
 
 _bh_is_mac && _bh_safe_source "$ZDOTDIR/1password.zsh"
 _bh_is_wsl && _bh_safe_source "$ZDOTDIR/npiperelay.zsh"
+_bh_safe_source "$ZDOTDIR/fzf.zsh"
 
 ################################################################################
 # History
