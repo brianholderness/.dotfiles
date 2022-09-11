@@ -2,8 +2,8 @@
 main() {
     commands=(
         "brew list"
-        "brew leaves | xargs -n1 brew desc"
-        "brew leaves --installed-on-request | xargs -n1 brew desc"
+        "brew leaves | xargs brew desc --eval-all"
+        "brew leaves --installed-on-request | xargs brew desc --eval-all"
         "brew outdated"
         "brew upgrade"
         "brew update"
