@@ -12,6 +12,11 @@ vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "Find hel
 local actions = require("telescope.actions")
 
 telescope.setup {
+    pickers = {
+        find_files = {
+            hidden = true
+        }
+    },
     defaults = {
         file_ignore_patterns = { ".git/", "node_modules" },
         mappings = {

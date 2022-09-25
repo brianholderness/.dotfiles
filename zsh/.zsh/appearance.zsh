@@ -35,7 +35,7 @@ preexec() {
 PATH_SECTION='%F{blue}%3d%f'
 ERROR_SECTION='%(?.. | %F{red}%?%f)'
 
-PS1="%B%K{black}[ 🐢 ${PATH_SECTION}\$(_vcs_info_wrapper)${ERROR_SECTION} ]%k
+PS1="%B%K{black}[ 🍁 ${PATH_SECTION}\$(_vcs_info_wrapper)${ERROR_SECTION} ]%k
 >%b "
 
 ################################################################################
