@@ -8,9 +8,9 @@ require("alpha.term")
 local dashboard = require("alpha.themes.dashboard")
 
 -- dashboard.section.terminal.command = "cat | lolcat --seed=160 -t --freq=0.025 " .. os.getenv("XDG_CONFIG_HOME") .. "/nvim/assets/alpha-splash.txt"
-dashboard.section.terminal.command = "cat " .. os.getenv("HOME") .. "/.config/nvim/assets/alpha-splash-static.txt"
-dashboard.section.terminal.width = 86
-dashboard.section.terminal.height = 21
+-- dashboard.section.terminal.command = "cat " .. os.getenv("HOME") .. "/.config/nvim/assets/alpha-splash-static.txt 2>/dev/null"
+-- dashboard.section.terminal.width = 86
+-- dashboard.section.terminal.height = 21
 
 dashboard.section.buttons.val = {
     dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
@@ -22,12 +22,12 @@ dashboard.section.buttons.val = {
 }
 -- dashboard.section.buttons.opts.spacing = 0
 
-dashboard.config.layout = {
-    { type = "padding", val = 1 },
-    dashboard.section.terminal,
-    { type = "padding", val = 27 },
-    dashboard.section.buttons,
-}
+-- dashboard.config.layout = {
+--     { type = "padding", val = 1 },
+--     dashboard.section.terminal,
+--     { type = "padding", val = 27 },
+--     dashboard.section.buttons,
+-- }
 
 alpha.setup(dashboard.opts)
 
