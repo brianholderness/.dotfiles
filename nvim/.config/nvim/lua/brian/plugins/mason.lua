@@ -7,7 +7,7 @@ require("mason-lspconfig").setup({
     }
 })
 
-local lsp_options = require("user.plugins.lsp-options")
+local lsp_options = require("brian.plugins.lsp-options")
 
 local cmp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_status_ok then

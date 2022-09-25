@@ -2,7 +2,6 @@ vim.opt.number = true
 
 vim.opt.mouse = "a"
 vim.opt.mousemodel = "popup_setpos"
-vim.opt.clipboard = "unnamedplus"
 vim.opt.showmode = false
 vim.opt.laststatus = 3
 --------------------
@@ -29,16 +28,6 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 vim.g.mapleader = ' '
-vim.keymap.set('i', '<S-Tab>', '<C-d>', { desc = 'Unindent current line' })
-vim.keymap.set('n', 'gl', ':HopLine<CR>', { silent = true })
-vim.keymap.set('n', 'g/', ':HopPattern<CR>', { silent = true })
-vim.keymap.set('n', '<leader>ft', ':set filetype=')
-
-vim.keymap.set({ 'n', 'v' }, '<C-e>', '3<C-e>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<C-y>', '3<C-y>', { silent = true })
-vim.keymap.set('n', '<leader>bp', ':bp<CR>', { silent = true })
-vim.keymap.set('n', '<leader>bn', ':bn<CR>', { silent = true })
-vim.keymap.set('n', '<leader>bd', ':bd<CR>', { silent = true })
 
 vim.g.NERDCreateDefaultMappings = 1
 vim.g.NERDSpaceDelims = 1
@@ -51,21 +40,45 @@ augroup RestoreCursorShapeOnExit
 augroup END
 ]]
 
-require("user.options")
-require("user.autocommands")
-require("user.colorscheme")
+-- local ok, impatient = pcall(require, "impatient")
+-- if ok then
+--     impatient.enable_profile()
+-- end
 
-require("user.bufferline")
-require("user.telescope")
-require("user.autopairs")
-require("user.autocomplete")
-require("user.alpha")
+-- Global config namespace
+-- We namespace the config so that when we reload our modules it picks up all
+-- the files in that scope and clears the package cache
+-- Ref: https://www.reddit.com/r/neovim/comments/puuskh/comment/he5vnqc
+_G.config_namespace = "brian"
+
+-- Allow us to use :source $MYVIMRC to reload portions of our config
+_G.reload = function(module)
+    package.loaded[module] = nil
+    return require(module)
+end
+
+
+local ok, _ = reload(config_namespace .. ".core")
+
+if not ok then
+    vim.notify("Error: Could not load user core modules")
+end
+
+require("brian.options")
+require("brian.autocommands")
+require("brian.colorscheme")
+
+require("brian.bufferline")
+require("brian.telescope")
+require("brian.autopairs")
+require("brian.autocomplete")
+require("brian.alpha")
 
 --------------------
 
-require('user.plugins')
-require('user.plugins.lualine')
--- require('user.plugins.hop')
-require('user.plugins.nvim-treesitter')
-require('user.plugins.mason')
-require('user.plugins.indent-blankline')
+require('brian.plugins')
+require('brian.plugins.lualine')
+-- require('brian.plugins.hop')
+require('brian.plugins.nvim-treesitter')
+require('brian.plugins.mason')
+require('brian.plugins.indent-blankline')
